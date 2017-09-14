@@ -48,7 +48,7 @@ variable "ssh_user" {
   description = "default user for VM"
 }
 variable "ssh_label" {
-  default = "public ssh key"
+  default = "public ssh key - Schematics VM"
 }
 variable "ssh_notes" {
   default = ""
@@ -57,7 +57,7 @@ variable "public_key" {
   default = ""
   description = "public SSH key to use in keypair"
 }
-variable "temp_private_key" {
+variable "private_key" {
   default = ""
 }
 
@@ -101,7 +101,7 @@ resource "ibm_compute_vm_instance" "vm" {
   tags                     = ["${var.tags}"]
   connection {
     user        = "${var.ssh_user}"
-    private_key = "${var.temp_private_key}"
+    private_key = "${var.private_key}"
   }
   
   # Create the installation script
